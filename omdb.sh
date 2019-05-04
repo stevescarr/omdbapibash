@@ -9,13 +9,13 @@ usage() {
 
     echo "
 usage: $scriptName [options]
-    -t=<title>|--title=<title>
-        Finds an exact match on a title of a movie: --title='star wars'
+    -t=<title>
+        Finds an exact match on a title of a movie: -t='star wars'
 
-    -r=<title>|--rating=<title>
-        Finds the rotten tomatos rating of a movie: --rating='star wars'
+    -r=<rating>
+        Finds the rotten tomatos rating of a movie: -r='star wars'
 
-    --help   optional  Print this help message
+    -h   optional  Print this help message
     "
 }
 
@@ -33,43 +33,31 @@ main() {
         exit 1
     fi
 
-    CMDS=()
-    OPTIONS=""
+    t=""
+    r=""
 
-    for i in "$@"
-    do
-        case $i in
-            -t=*|--title=*)
-                CMDS+=('title')
-                OPTIONS="${i#*=}"
-                shift # past argument=value
-            ;;
-            -r=*|--rating=*)
-                CMDS+=('rating')
-                OPTIONS="${i#*=}"
-                shift # past argument=value
-            ;;
-            --help)
+    while getopts ":r:t:" o; do
+        case "${o}" in
+            t)
+                t=${OPTARG}
+                ;;
+            r)
+                r=${OPTARG}
+                ;;
+            *)
                 usage
-                exit 1
-            ;;
+                ;;
         esac
     done
+    shift $((OPTIND-1))
 
-    if [ ${#CMDS[@]} -eq 0 ]; then
-        usage
-        exit 1
+    if [ ! -z "$t" ]; then
+        echo $(title ${t})
     fi
 
-    for command in "${CMDS[@]}"
-    do
-        # echo "command: $command"
-        if ! fn_exists $command; then
-            echo "\n*** function: '$command' does not exist ***"
-            exit
-        fi
-        echo $($command ${OPTIONS})
-    done
+    if [ ! -z "$r" ]; then
+        echo $(rating ${r})
+    fi
 }
 
 main $@

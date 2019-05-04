@@ -34,7 +34,6 @@ Run the docker image: `docker run -e API_KEY=<APIKEY> --rm omdbapibash:latest ba
 
 ```
 docker run -e API_KEY=1a32b3c4d --rm omdbapibash:latest bash omdb.sh -h
-docker run -e API_KEY=1a32b3c4d --rm omdbapibash:latest bash omdb.sh --help
 ```
 
 ### Tests
@@ -48,26 +47,19 @@ Display Help
 ```
 docker run --rm omdbbashapi:latest bash omdb.sh
 docker run --rm omdbbashapi:latest bash omdb.sh -h
-docker run --rm omdbbashapi:latest bash omdb.sh --help
 ```
 
 Find the rotten tomato rating for the movie avatar
 
 ```
-docker run --rm omdbbashapi:latest bash omdb.sh -rr=avatar
-docker run --rm omdbbashapi:latest bash omdb.sh --rottenrating=avatar
+docker run --rm omdbbashapi:latest bash omdb.sh -r=avatar
 ```
 
-Find all info about movie titanic in JSON format
+Find all info about movie star wars in JSON format
 
 ```
-docker run --rm omdbbashapi:latest bash omdb.sh -t=titanic
-docker run --rm omdbbashapi:latest bash omdb.sh --title=titanic
+docker run --rm omdbbashapi:latest bash omdb.sh -t='star wars'
 ```
-
-## Known Issues
-
-* Parsing command line parameters is presently unavailable. I will have to update this.
 
 ## Built With
 
