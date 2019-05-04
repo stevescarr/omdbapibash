@@ -65,6 +65,10 @@ docker run --rm omdbbashapi:latest bash omdb.sh -t=titanic
 docker run --rm omdbbashapi:latest bash omdb.sh --title=titanic
 ```
 
+## Known Issues
+
+* Parsing command line parameters is presently unavailable. I will have to update this.
+
 ## Built With
 
 * [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) - Bash Scripting Language
