@@ -27,7 +27,7 @@ git clone git@github.com:stevescarr/omdbapibash.git
 Build the docker image: `docker build -t <NAME_OF_IMAGE> .`
 
 ```
-docker build -t omdbbashapi .
+docker build -t omdbapibash .
 ```
 
 Run the docker image: `docker run -e API_KEY=<APIKEY> --rm omdbapibash:latest bash omdb.sh`
@@ -45,20 +45,20 @@ Tests are not implemented for this bash tool
 Display Help
 
 ```
-docker run --rm omdbbashapi:latest bash omdb.sh
-docker run --rm omdbbashapi:latest bash omdb.sh -h
+docker run --rm omdbapibash:latest bash omdb.sh
+docker run --rm omdbapibash:latest bash omdb.sh -h
 ```
 
 Find the rotten tomato rating for the movie avatar
 
 ```
-docker run --rm omdbbashapi:latest bash omdb.sh -r=avatar
+docker run --rm omdbapibash:latest bash omdb.sh -r=avatar
 ```
 
 Find all info about movie star wars in JSON format
 
 ```
-docker run --rm omdbbashapi:latest bash omdb.sh -t='star wars'
+docker run --rm omdbapibash:latest bash omdb.sh -t='star wars'
 ```
 
 ## Built With
